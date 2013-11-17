@@ -1,5 +1,5 @@
-require 'highline/import'
 require 'zlog'
+require 'git-issues/login_helper'
 
 # helper: quicly get all submodules
 # http://www.natontesting.com/2010/06/30/how-to-get-the-submodules-of-a-ruby-module/
@@ -54,17 +54,7 @@ class RepoProviders
     end
     c.class_eval <<-EOF
       def log; @log ||= Logging.logger[#{c}]; end
-      def cli; @cli ||= HighLine.new; end
-
-      def user; @user ||= get_user; end
-      def get_user
-        cli.ask("Enter username: "){|q| q.echo = false}
-      end
-
-      def password; @password ||= get_password; end
-      def get_password
-        cli.ask("Enter password for user '\#{user}': "){|q| q.echo = ''}
-      end
+      include ::LoginHelper
       EOF
     c
   end
