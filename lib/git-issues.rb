@@ -7,6 +7,7 @@ class GitIssues
   def version; '0.0' end
   Log = Logging.logger[self]
 
+  attr_reader :providers
   def initialize
     @providers = RepoProviders.new
   end
