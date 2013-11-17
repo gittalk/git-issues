@@ -42,7 +42,14 @@ class RepoProvider::Bitbucket
   end
 
   def init_bitbucket
-    @bitbucket = BitBucket.new login: user, password: password
+    ot,os = oauth_token_and_secret
+    # get configuration from oauth token and secret
+    if( not ot.nil? and not os.nil? )
+      @bitbucket = BitBucket.new oauth_token: ot, oauth_secret: os
+    else
+      # use login and password otherwise
+      @bitbucket = BitBucket.new login: user, password: password
+    end
   end
 
 end

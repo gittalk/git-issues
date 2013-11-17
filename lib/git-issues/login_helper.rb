@@ -17,6 +17,11 @@ module LoginHelper
     @oauth_secret ||= get_secret("Enter OAuth secret: ", "oauth-secret")
   end
 
+  def oauth_token_and_secret
+    t = oauth_token
+    ( t.nil? ) ? [nil,nil] : [t, oauth_secret]
+  end
+
   def user
     @user ||= get_open("Enter username: ", "username")
   end
