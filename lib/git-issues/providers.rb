@@ -49,20 +49,21 @@ class RepoProviders
   end
 
   def add_methods_to_provider c
-    c.const_set "Log", Logging.logger[c]
-    c.const_set "CLI", HighLine.new
     ['repo_url', 'repo'].each do |arg|
       c.class_eval("def #{arg};@#{arg};end")
     end
     c.class_eval <<-EOF
+      def log; @log ||= Logging.logger[#{c}]; end
+      def cli; @cli ||= HighLine.new; end
+
       def user; @user ||= get_user; end
       def get_user
-        CLI.ask("Enter username: "){|q| q.echo = false}
+        cli.ask("Enter username: "){|q| q.echo = false}
       end
 
       def password; @password ||= get_password; end
       def get_password
-        CLI.ask("Enter password for user '\#{user}': "){|q| q.echo = ''}
+        cli.ask("Enter password for user '\#{user}': "){|q| q.echo = ''}
       end
       EOF
     c
