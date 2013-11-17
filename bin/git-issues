@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+require 'thor'
+require 'git-issues'
+
+class GitIssuesCLI < Thor
+  include GitIssues
+
+  desc "list", "list issues of a repository"
+  def list
+  end
+
+end
+
+GitIssuesCLI.start(ARGV)
