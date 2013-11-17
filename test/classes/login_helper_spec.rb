@@ -2,10 +2,19 @@ require 'minitest_helper'
 
 describe LoginHelper do
   before :each do 
-    @l = Class.new do; include LoginHelper end.new
+    @l = Class.new do
+        include LoginHelper
+      end.new
+    @ln = Class.new do
+        def name; 'testgroup' end
+        include LoginHelper
+      end.new
     @config_path = Tempfile.new('foo').path
+    @config_pathn = Tempfile.new('foo').path
     File::write(@config_path, '')
+    File::write(@config_pathn, '')
     @l.instance_variable_set :@config_file, @config_path
+    @ln.instance_variable_set :@config_file, @config_pathn
   end
 
   it "should use the config file if one was configured" do
@@ -33,7 +42,10 @@ describe LoginHelper do
     v = "testvalue"
     f = "testfield"
     @l.get_or_set f do v end.must_equal v
-    File::read( @config_path ).must_equal "#{f} = #{v}\n\n"
+    File::read( @config_path ).strip.must_equal "#{f} = #{v}"
+
+    @ln.get_or_set f do v end.must_equal v
+    File::read( @config_pathn ).strip.must_equal "[#{@ln.name}]\n#{f} = #{v}"
   end
 
   it "should have a method to provide an oauth_consumer_key" do

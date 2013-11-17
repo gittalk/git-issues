@@ -49,11 +49,16 @@ class RepoProviders
   end
 
   def add_methods_to_provider c
+    # get the base name of the provider
+    name = c.name.sub(/.*::/,'').downcase
+    # add simple fields
     ['repo_url', 'repo'].each do |arg|
       c.class_eval("def #{arg};@#{arg};end")
     end
+    # add login helper
     c.class_eval <<-EOF
       def log; @log ||= Logging.logger[#{c}]; end
+      def name; #{name.inspect} end
       include ::LoginHelper
       EOF
     c

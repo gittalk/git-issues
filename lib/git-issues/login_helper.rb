@@ -31,10 +31,14 @@ module LoginHelper
   end
 
   def get_or_set field, &block
-    f = get_from_config_file field
+    # all configuration fields belong to a group
+    group = ( self.respond_to?('name') ) ? name : nil
+    # get the field from file...
+    f = get_from_config_file field, group
+    # ... or ask the user to provide it and save it then
     if f.nil?
       f = block.()
-      save_to_config_file field, f
+      save_to_config_file field, f, group
     end
     f
   end
@@ -52,14 +56,20 @@ module LoginHelper
     ParseConfig.new(conf_path)
   end
 
-  def get_from_config_file field
+  def get_from_config_file field, group = nil
     config = get_conf
-    config.params[field]
+    return config.params[field] if (group.nil?)
+    (config.params[group].nil?) ? nil : config.params[group][field]
   end
 
-  def save_to_config_file field, value
+  def save_to_config_file field, value, group = nil
     config = get_conf
-    config.params[field] = value.to_s
+    # add the field/value/group
+    if group.nil?
+      config.add field, value
+    else
+      config.add_to_group group, field, value.to_s
+    end
     # get the path
     path = File::expand_path(config_file)
     # write the contents to the file

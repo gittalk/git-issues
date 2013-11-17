@@ -42,7 +42,7 @@ class RepoProvider::Bitbucket
   end
 
   def init_bitbucket
-    ot,os = oauth_consumer_token_and_secret
+    ot,os = oauth_consumer_key_and_secret
     # get configuration from oauth token and secret
     if( not ot.nil? and not os.nil? )
       @bitbucket = BitBucket.new client_id: ot, client_secret: os
