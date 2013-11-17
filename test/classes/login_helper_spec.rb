@@ -12,6 +12,11 @@ describe LoginHelper do
     @l.config_file.must_equal @config_path
   end
 
+  it "should make sure the config file permissions are restricted" do
+    @l.get_or_set "field" do "value" end
+    ( File.stat( @config_path ).mode & 0177 ).must_equal 0
+  end
+
   it "should default to config file in home folder if none is configured" do
     @l.instance_variable_set :@config_file, nil
     @l.config_file.must_equal "~/.git-issues.conf"

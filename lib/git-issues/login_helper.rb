@@ -60,10 +60,14 @@ module LoginHelper
   def save_to_config_file field, value
     config = get_conf
     config.params[field] = value.to_s
-
-    file = File.open(File::expand_path(config_file), 'w+')
+    # get the path
+    path = File::expand_path(config_file)
+    # write the contents to the file
+    file = File.open(path, 'w+')
     config.write(file)
     file.close
+    # limit permissions to this file
+    File.chmod(0600, path)
   end
 
   def get_open prompt, field
