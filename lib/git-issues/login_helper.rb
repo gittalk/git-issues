@@ -4,7 +4,7 @@ module LoginHelper
 
   def user; @user ||= get_user; end
   def get_user
-    cli.ask("Enter username: "){|q| q.echo = false}
+    cli.ask("Enter username: "){|q| q.echo = true}
   end
 
   def password; @password ||= get_password; end
