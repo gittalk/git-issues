@@ -26,7 +26,9 @@ describe LoginHelper do
 
   it "should write a config item to file if none is configured" do
     v = "testvalue"
-    @l.get_or_set "testfield" do v end.must_equal v
+    f = "testfield"
+    @l.get_or_set f do v end.must_equal v
+    File::read( @config_path ).must_equal "#{f} = #{v}\n\n"
   end
 
   it "should have a method to provide an oauth_token" do
