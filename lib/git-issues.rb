@@ -1,3 +1,5 @@
+require 'git-issues/providers'
+
 require 'parseconfig'
 require 'zlog'
 
@@ -5,13 +7,11 @@ class GitIssues
   def version; '0.0' end
   Log = Logging.logger[self]
 
-  GIT_URLS = {
-    bitbucket: [
-      /git@bitbucket.org:(?<user>[^\/]+)\/(?<repo>.+)\.git/
-    ]
-  }
+  def initialize
+    @providers = RepoProviders.new
+  end
 
-  def gitReposFor path, type = nil
+  def gitReposFor path
     p = File::expand_path(path)
     git_path = File::join(p, '.git')
     git_conf = File::join(git_path, 'config')
@@ -30,10 +30,8 @@ class GitIssues
 
     remotes = config.params.keys.find_all{|i|i.start_with?('remote ')}
     remote_repos = remotes.map{|r| config.params[r]['url']}
-    url_patterns = (type.nil?) ? GIT_URLS.values.flatten : GIT_URLS[type]
-    valid_repos = remote_repos.map do |r|
-        url_patterns.map{|p| p.match(r) }.compact.first
-      end.compact
+
+    @providers.map_urls_to_provider( remote_repos )
   end
 
 end

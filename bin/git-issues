@@ -60,10 +60,11 @@ class GitIssuesCLI < Thor
   end
 
   def getRepo path
-    repos = GI.gitReposFor '.', :bitbucket
+    repos = GI.gitReposFor '.'
     if repos.empty?
-      Log.abort "No bitbucket repositories found."
+      Log.abort "No known repositories found."
     end
+    Log.info "Using: #{repos.first.repo_url}"
     repos.first
   end
 
