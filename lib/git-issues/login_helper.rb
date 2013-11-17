@@ -9,7 +9,7 @@ module LoginHelper
 
   def password; @password ||= get_password; end
   def get_password
-    cli.ask("Enter password for user '\#{user}': "){|q| q.echo = ''}
+    cli.ask("Enter password for user '#{user}': "){|q| q.echo = ''}
   end
 
   private
