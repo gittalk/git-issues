@@ -92,7 +92,7 @@ module LoginHelper
 
   def get_secret prompt, field
     get_or_set field do
-      cli.ask(prompt){|q| q.echo = ''}.strip
+      cli.ask(prompt){|q| q.echo = '*'}.strip
     end
   end
 
