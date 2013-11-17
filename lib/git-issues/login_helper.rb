@@ -68,13 +68,13 @@ module LoginHelper
 
   def get_open prompt, field
     get_or_set field do
-      cli.ask(prompt){|q| q.echo = true}
+      cli.ask(prompt){|q| q.echo = true}.strip
     end
   end
 
   def get_secret prompt, field
     get_or_set field do
-      cli.ask(prompt){|q| q.echo = ''}
+      cli.ask(prompt){|q| q.echo = ''}.strip
     end
   end
 
