@@ -14,16 +14,8 @@ class GitIssuesCLI < Thor
   desc "list", "list issues of a repository"
   method_options :all => :boolean
   def list
-    repos = GI.gitReposFor '.', :bitbucket
-    if repos.empty?
-      Log.abort "No bitbucket repositories found."
-    end
-    repo = repos.first
-
-    user = 'arlimus'
-    password = get_password("Enter password for #{user}")
-    bitbucket = BitBucket.new login: user, password: password
-    issues = bitbucket.issues.list_repo(repo['user'], repo['repo'])
+    repo = getRepo '.'
+    issues = @bitbucket.issues.list_repo(repo['user'], repo['repo'])
 
     # filter closed issues if the user doesn't want all
     if not options.all
@@ -38,6 +30,22 @@ class GitIssuesCLI < Thor
   end
 
   private
+
+  def getRepo path
+    init_bitbucket
+
+    repos = GI.gitReposFor '.', :bitbucket
+    if repos.empty?
+      Log.abort "No bitbucket repositories found."
+    end
+    repos.first
+  end
+
+  def init_bitbucket
+    user = 'arlimus'
+    password = get_password("Enter password for #{user}")
+    @bitbucket = BitBucket.new login: user, password: password
+  end
 
   def get_password(prompt="Enter Password")
     CLI.ask(prompt){|q| q.echo = '*'}
