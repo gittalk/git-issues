@@ -1,3 +1,5 @@
+require 'bitbucket_rest_api'
+
 class RepoProvider::Bitbucket
   
   URL_PATTERNS = [
@@ -19,7 +21,7 @@ class RepoProvider::Bitbucket
         }
     end
     # return issues
-    issues
+    format_issues( issues )
   end
 
   def issue_create title, content
@@ -35,13 +37,20 @@ class RepoProvider::Bitbucket
 
   private
 
+  def format_issues is
+    Array(is).map do |i|
+      i['number'] = i['local_id']
+      i['state'] = i['status']
+      i
+    end
+  end
+
   def bitbucket
     init_bitbucket if @bitbucket.nil?
     @bitbucket
   end
 
   def init_bitbucket
-    require 'bitbucket_rest_api'
     ot,os = oauth_consumer_key_and_secret
     # get configuration from oauth token and secret
     if( not ot.nil? and not os.nil? )

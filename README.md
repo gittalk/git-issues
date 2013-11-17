@@ -1,6 +1,6 @@
 # git-issue
 
-* list issues (bitbucket ✔, github ◽, gitlab ◽)
+* list issues (bitbucket ✔, github ✔, gitlab ◽)
 * create issue (bitbucket ✔, github ◽, gitlab ◽)
 * delete issue (bitbucket ✔, github ◽, gitlab ◽)
 * cli integration ⋯

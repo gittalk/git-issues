@@ -19,7 +19,7 @@ class GitIssuesCLI < Thor
 
     issues = repo.issues_list o
     issues.each do |i|
-      puts "%-3i | %-8s | %s" % [ i['local_id'], i['status'], i['title'] ]
+      puts "%-3i | %-8s | %s" % [ i['number'], i['state'], i['title'] ]
     end
     nil
   end

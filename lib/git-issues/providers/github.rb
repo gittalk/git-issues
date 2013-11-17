@@ -1,3 +1,5 @@
+require 'octokit'
+
 class RepoProvider::Github
 
   URL_PATTERNS = [
@@ -10,16 +12,14 @@ class RepoProvider::Github
   end
 
   def issues_list opts = {}
-    require 'pry'
-    binding.pry
     # get issues for this repo
     if not opts[:all]
-      issues = github.issues.list 'arlimus', 'git-issues', state: 'open'
+      issues = github.issues "#{repo['user']}/#{repo['repo']}"
     else
-      issues = github.issues.list 'arlimus', 'git-issues'
+      issues = github.issues "#{repo['user']}/#{repo['repo']}"
     end
     # return issues
-    issues.body
+    format_issues( issues )
   end
 
   def issue_create title, content
@@ -35,20 +35,26 @@ class RepoProvider::Github
 
   private
 
+  def format_issues is
+    Array(is).map do |i|
+      # nothing yet...
+      i
+    end
+  end
+
   def github
     init_github if @github.nil?
     @github
   end
 
   def init_github
-    require 'github_api'
     ot = oauth_token
     # get configuration from oauth token and secret
     if( not ot.nil? )
-      @github = Github.new oauth_token: ot
+      @github = Octokit::Client.new oauth_token: ot
     else
       # use login and password otherwise
-      @github = Github.new login: user, password: password
+      @github = Octokit::Client.new login: user, password: password
     end
   end
 

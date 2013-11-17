@@ -16,6 +16,8 @@ spec = Gem::Specification.new do |s|
 
   s.add_dependency 'thor'
   s.add_dependency 'parseconfig'
+  s.add_dependency 'bitbucket_rest_api'
+  s.add_dependency 'octokit'
 
   s.files = `git ls-files`.split("\n")
   s.executables = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
