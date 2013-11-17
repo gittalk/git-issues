@@ -1,5 +1,5 @@
 class RepoProvider::Bitbucket
-
+  
   URL_PATTERNS = [
     /git@bitbucket.org:(?<user>[^\/]+)\/(?<repo>.+)\.git/
   ]

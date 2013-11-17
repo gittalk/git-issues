@@ -17,6 +17,7 @@ end
 module RepoProvider; end
 # get all predefined providers
 require 'git-issues/providers/bitbucket'
+require 'git-issues/providers/github'
 
 class RepoProviders
   attr_reader :providers
