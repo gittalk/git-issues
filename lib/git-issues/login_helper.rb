@@ -61,7 +61,7 @@ module LoginHelper
     config = get_conf
     config.params[field] = value.to_s
 
-    file = File.open(config_file, 'w+')
+    file = File.open(File::expand_path(config_file), 'w+')
     config.write(file)
     file.close
   end
