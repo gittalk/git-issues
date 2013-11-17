@@ -15,7 +15,6 @@ spec = Gem::Specification.new do |s|
   #s.homepage = 'n/a'
 
   s.add_dependency 'thor'
-  s.add_dependency 'bitbucket_rest_api'
   s.add_dependency 'parseconfig'
 
   s.files = `git ls-files`.split("\n")

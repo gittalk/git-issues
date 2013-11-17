@@ -1,6 +1,5 @@
-require 'bitbucket_rest_api'
-
 class RepoProvider::Bitbucket
+
   URL_PATTERNS = [
     /git@bitbucket.org:(?<user>[^\/]+)\/(?<repo>.+)\.git/
   ]
@@ -42,6 +41,7 @@ class RepoProvider::Bitbucket
   end
 
   def init_bitbucket
+    require 'bitbucket_rest_api'
     ot,os = oauth_consumer_key_and_secret
     # get configuration from oauth token and secret
     if( not ot.nil? and not os.nil? )
