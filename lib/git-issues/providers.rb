@@ -19,6 +19,7 @@ module RepoProvider; end
 require 'git-issues/providers/bitbucket'
 
 class RepoProviders
+  attr_reader :providers
   def initialize
     @providers = RepoProvider.subclasses.map do |c|
         add_methods_to_provider(c)
