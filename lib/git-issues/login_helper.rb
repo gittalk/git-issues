@@ -1,7 +1,6 @@
 require 'highline/import'
 
 module LoginHelper
-  def cli; @cli ||= HighLine.new; end
 
   def user; @user ||= get_user; end
   def get_user
@@ -12,4 +11,9 @@ module LoginHelper
   def get_password
     cli.ask("Enter password for user '\#{user}': "){|q| q.echo = ''}
   end
+
+  private
+
+  def cli; @cli ||= HighLine.new; end
+
 end
