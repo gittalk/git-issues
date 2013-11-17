@@ -1,28 +1,21 @@
 #!/usr/bin/env ruby
 
 require 'thor'
-require 'bitbucket_rest_api'
 require 'zlog'
-require 'highline/import'
 require 'git-issues'
 
 class GitIssuesCLI < Thor
   Log = Logging.logger[self]
   GI = GitIssues.new
-  CLI = HighLine.new
 
   desc "list", "list issues of a repository"
   method_options :all => :boolean
-  def list
-    issues = bitbucket.issues.list_repo(repo['user'], repo['repo'])
+  def list opts = {}
+    o = ({
+      all: (options.all)
+    }).merge(opts)
 
-    # filter closed issues if the user doesn't want all
-    if not options.all
-      issues = issues.find_all{|i|
-        'resolved' != i['status']
-      }
-    end
-
+    issues = repo.issues_list o
     issues.each do |i|
       puts "%-3i | %-8s | %s" % [ i['local_id'], i['status'], i['title'] ]
     end
@@ -54,11 +47,6 @@ class GitIssuesCLI < Thor
     @repo ||= getRepo path
   end
 
-  def bitbucket
-    init_bitbucket if @bitbucket.nil?
-    @bitbucket
-  end
-
   def getRepo path
     repos = GI.gitReposFor '.'
     if repos.empty?
@@ -66,16 +54,6 @@ class GitIssuesCLI < Thor
     end
     Log.info "Using: #{repos.first.repo_url}"
     repos.first
-  end
-
-  def init_bitbucket
-    user = 'arlimus'
-    password = get_password("Enter password for #{user}")
-    @bitbucket = BitBucket.new login: user, password: password
-  end
-
-  def get_password(prompt="Enter Password")
-    CLI.ask(prompt){|q| q.echo = '*'}
   end
 
 end

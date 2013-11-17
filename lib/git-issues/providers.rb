@@ -1,3 +1,6 @@
+require 'highline/import'
+require 'zlog'
+
 # helper: quicly get all submodules
 # http://www.natontesting.com/2010/06/30/how-to-get-the-submodules-of-a-ruby-module/
 class Module
@@ -18,11 +21,7 @@ require 'git-issues/providers/bitbucket'
 class RepoProviders
   def initialize
     @providers = RepoProvider.subclasses.map do |c|
-        c.const_set "Log", Logging.logger[c]
-        ['repo_url', 'repo'].each do |arg|
-          c.class_eval("def #{arg};@#{arg};end")
-        end
-        c
+        add_methods_to_provider(c)
       end
   end
 
@@ -46,5 +45,25 @@ class RepoProviders
     pc.instance_variable_set(:@repo_url, url)
     pc.instance_variable_set(:@repo, repo)
     pc
+  end
+
+  def add_methods_to_provider c
+    c.const_set "Log", Logging.logger[c]
+    c.const_set "CLI", HighLine.new
+    ['repo_url', 'repo'].each do |arg|
+      c.class_eval("def #{arg};@#{arg};end")
+    end
+    c.class_eval <<-EOF
+      def user; @user ||= get_user; end
+      def get_user
+        CLI.ask("Enter username: "){|q| q.echo = false}
+      end
+
+      def password; @password ||= get_password; end
+      def get_password
+        CLI.ask("Enter password for user '\#{user}': "){|q| q.echo = ''}
+      end
+      EOF
+    c
   end
 end
