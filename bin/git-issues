@@ -4,6 +4,8 @@ require 'thor'
 require 'zlog'
 require 'git-issues'
 
+Zlog.init_stdout loglevel: :debug
+
 class GitIssuesCLI < Thor
   Log = Logging.logger[self]
   GI = GitIssues.new
