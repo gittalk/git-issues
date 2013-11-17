@@ -19,7 +19,7 @@ module LoginHelper
 
   def oauth_token_and_secret
     t = oauth_token
-    ( t.nil? ) ? [nil,nil] : [t, oauth_secret]
+    ( t.empty? ) ? [nil,nil] : [t, oauth_secret]
   end
 
   def user
