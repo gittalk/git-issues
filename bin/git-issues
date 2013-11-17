@@ -24,15 +24,12 @@ class GitIssuesCLI < Thor
 
   desc "add <title> <content>", "add a new issue"
   def add( title, content )
-    bitbucket.issues.create( repo['user'], repo['repo'], {
-      title:    title,
-      content:  content
-      })
+    repo.issue_create title, content
   end
 
   desc "delete <id>", "delete an issue"
   def delete( id )
-    bitbucket.issues.delete( repo['user'], repo['repo'], id)
+    repo.issue_delete id
   end
 
   desc "cli", "open a cli"

@@ -23,6 +23,17 @@ class RepoProvider::Bitbucket
     issues
   end
 
+  def issue_create title, content
+    bitbucket.issues.create( repo['user'], repo['repo'], {
+      title:    title,
+      content:  content
+      })
+  end
+
+  def issue_delete id
+    bitbucket.issues.delete( repo['user'], repo['repo'], id)
+  end
+
   private
 
   def bitbucket
