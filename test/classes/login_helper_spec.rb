@@ -31,12 +31,12 @@ describe LoginHelper do
     File::read( @config_path ).must_equal "#{f} = #{v}\n\n"
   end
 
-  it "should have a method to provide an oauth_token" do
-    @l.must_respond_to :oauth_token
+  it "should have a method to provide an oauth_consumer_key" do
+    @l.must_respond_to :oauth_consumer_key
   end
 
-  it "should have a method to provide an oauth_secret" do
-    @l.must_respond_to :oauth_secret
+  it "should have a method to provide an oauth_consumer_secret" do
+    @l.must_respond_to :oauth_consumer_secret
   end
 
   it "should have a method to provide a username" do

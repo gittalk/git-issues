@@ -9,17 +9,17 @@ module LoginHelper
     @config_file ||= "~/.git-issues.conf"
   end
 
-  def oauth_token
-    @oauth_token ||= get_open("Enter OAuth token: ", "oauth-token")
+  def oauth_consumer_key
+    @oauth_token ||= get_open("Enter OAuth consumer key: ", "oauth-consumer-key")
   end
 
-  def oauth_secret
-    @oauth_secret ||= get_secret("Enter OAuth secret: ", "oauth-secret")
+  def oauth_consumer_secret
+    @oauth_secret ||= get_secret("Enter OAuth consumer secret: ", "oauth-consumer-secret")
   end
 
-  def oauth_token_and_secret
-    t = oauth_token
-    ( t.empty? ) ? [nil,nil] : [t, oauth_secret]
+  def oauth_consumer_key_and_secret
+    t = oauth_consumer_key
+    ( t.empty? ) ? [nil,nil] : [t, oauth_consumer_secret]
   end
 
   def user
