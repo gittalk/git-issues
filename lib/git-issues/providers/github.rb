@@ -14,26 +14,27 @@ class RepoProvider::Github
   def issues_list opts = {}
     # get issues for this repo
     if not opts[:all]
-      issues = github.issues "#{repo['user']}/#{repo['repo']}"
+      issues = github.issues gh_repo
     else
-      issues = github.issues "#{repo['user']}/#{repo['repo']}"
+      issues = github.issues gh_repo
     end
     # return issues
     format_issues( issues )
   end
 
   def issue_create title, content
-    github.issues.create( repo['user'], repo['repo'], {
-      title:    title,
-      content:  content
-      })
+    github.create_issue gh_repo, title, content
   end
 
   def issue_delete id
-    github.issues.delete( repo['user'], repo['repo'], id)
+    log.warn "You can't delete issues on GitHub. Please close/resolve them instead."
   end
 
   private
+
+  def gh_repo
+    "#{repo['user']}/#{repo['repo']}"
+  end
 
   def format_issues is
     Array(is).map do |i|
