@@ -51,7 +51,7 @@ class RepoProvider::Github
     ot = oauth_token
     # get configuration from oauth token and secret
     if( not ot.nil? )
-      @github = Octokit::Client.new oauth_token: ot
+      @github = Octokit::Client.new access_token: ot
     else
       # use login and password otherwise
       @github = Octokit::Client.new login: user, password: password
