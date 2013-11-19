@@ -28,10 +28,12 @@ class RepoProvider::Gitlab
   private
 
   def gl_project_id
-    path = "#{repo['user']}/#{repo['repo']}"
-    p = gitlab.projects.find{|p| p.path_with_namespace == path}
-    log.info "using project #{p.id} -- #{p.path_with_namespace}" if not p.nil?
-    (p.nil?) ? nil : p.id
+    @gl_project_id ||= begin
+        path = "#{repo['user']}/#{repo['repo']}"
+        p = gitlab.projects.find{|p| p.path_with_namespace == path}
+        log.info "using project #{p.id} -- #{p.path_with_namespace}" if not p.nil?
+        (p.nil?) ? nil : p.id
+      end
   end
 
   def format_issues is
