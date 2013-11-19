@@ -12,7 +12,7 @@ class RepoProvider::Gitlab
   end
 
   def issues_list opts = {}
-    log.error "Not yet implemented"
+    issues = gitlab.issues gl_project_id
     # return issues
     format_issues( issues )
   end
@@ -31,15 +31,19 @@ class RepoProvider::Gitlab
     @gl_project_id ||= begin
         path = "#{repo['user']}/#{repo['repo']}"
         p = gitlab.projects.find{|p| p.path_with_namespace == path}
-        log.info "using project #{p.id} -- #{p.path_with_namespace}" if not p.nil?
+        log.info "using project id = #{p.id} (#{p.path_with_namespace})" if not p.nil?
         (p.nil?) ? nil : p.id
       end
   end
 
   def format_issues is
     Array(is).map do |i|
-      # nothing yet...
-      i
+      {
+        'number'      => i.id,
+        'title'       => i.title,
+        'description' => i.description,
+        'state'       => i.state
+      }
     end
   end
 
