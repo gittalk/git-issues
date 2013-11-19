@@ -22,10 +22,11 @@ Your login information will be stored by default in: `~/.git-issues.conf`. Make 
 
 If you can, **do not use username and password** for login. Use OAuth instead. If you use username and password, both will be stored in the configuration file in an unencrypted state, which is highly discouraged.
 
-Guides on how to create OAuth consumers:
+How to get OAuth tokens:
 
-* OAuth on GitHub: Go to Account Settings, Applications, and click on 'Create a new Personal Access Token'. Enter `git-issues` as the description. It is not yet supported, but will be very soon.
+* GitHub: Go to _Account Settings_, _Applications_, and click on _Create a new Personal Access Token_. Enter `git-issues` as the description. Use this token during first login.
 * [OAuth on BitBucket](https://confluence.atlassian.com/display/BITBUCKET/OAuth+on+Bitbucket)
+* Gitlab: Click on your profile, _Profile Settings_, _Account_ and use the _Private token_ found here.
 
 
 # Contributing
