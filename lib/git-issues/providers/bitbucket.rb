@@ -1,5 +1,8 @@
 require 'bitbucket_rest_api'
 
+# API documentation:
+# https://confluence.atlassian.com/display/BITBUCKET/Use+the+Bitbucket+REST+APIs
+
 class RepoProvider::Bitbucket
   
   URL_PATTERNS = [

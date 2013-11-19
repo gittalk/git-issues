@@ -1,5 +1,8 @@
 require 'gitlab'
 
+# API documentation:
+# http://api.gitlab.org/
+
 class RepoProvider::Gitlab
 
   URL_PATTERNS = [

@@ -1,5 +1,8 @@
 require 'octokit'
 
+# API documentation:
+# http://developer.github.com/v3/
+
 class RepoProvider::Github
 
   URL_PATTERNS = [
