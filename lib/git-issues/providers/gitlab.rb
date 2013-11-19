@@ -16,6 +16,8 @@ class RepoProvider::Gitlab
 
   def issues_list opts = {}
     issues = gitlab.issues gl_project_id
+    # filter out closed issues if desired
+    issues = issues.find_all{|i| i.state != 'closed' } if not opts[:all]
     # return issues
     format_issues( issues )
   end
