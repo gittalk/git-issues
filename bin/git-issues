@@ -18,7 +18,10 @@ class GitIssuesCLI < Thor
     }).merge(opts)
 
     issues = repo.issues_list o
-    issues.each do |i|
+    issues.
+      sort_by{|i| i['number']}.
+      reverse.
+      each do |i|
       puts "%-3i | %-8s | %s" % [ i['number'], i['state'], i['title'] ]
     end
     nil
