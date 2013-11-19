@@ -16,7 +16,7 @@ spec = Gem::Specification.new do |s|
 
   s.add_dependency 'thor'
   s.add_dependency 'parseconfig'
-  s.add_dependency 'bitbucket_rest_api'
+  s.add_dependency 'bitbucket_rest_api', '>= 0.1.5'
   s.add_dependency 'octokit'
   s.add_dependency 'gitlab'
 

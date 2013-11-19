@@ -11,10 +11,7 @@ Under development...
 
 # Dependencies
 
-* gems: thor, parseconfig, bitbucket_rest_api
-
-**Note**: At the time of this writing, bitbucket_rest_api is at version `0.1.4` and does not yet contain a [fix](https://github.com/vongrippen/bitbucket/commit/2098997cc102e8f5cf584df7d21c3303b518128c) (which is committed, but not yet updated) needed to function properly with oauth tokens. You may want to use the latest git version of this module instead.
-
+* gems: thor, parseconfig, octokit, bitbucket_rest_api, gitlab
 
 # Security
 
