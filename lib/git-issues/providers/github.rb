@@ -15,12 +15,10 @@ class RepoProvider::Github
   end
 
   def issues_list opts = {}
-    # get issues for this repo
-    if not opts[:all]
-      issues = github.issues gh_repo
-    else
-      issues = github.issues gh_repo
-    end
+    # get open issues for this repo
+    issues = github.issues gh_repo
+    # get all closed issues if required
+    issues += github.issues( gh_repo, state: 'closed' ) if opts[:all]
     # return issues
     format_issues( issues )
   end
