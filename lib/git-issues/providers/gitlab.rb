@@ -18,11 +18,11 @@ class RepoProvider::Gitlab
   end
 
   def issue_create title, content
-    log.error "Not yet implemented"
+    gitlab.create_issue gl_project_id, title, description: content
   end
 
   def issue_delete id
-    log.error "Not yet implemented"
+    log.warn "You can't delete issues on Gitlab anymore, it is deprecated. Please close/resolve them instead."
   end
 
   private
