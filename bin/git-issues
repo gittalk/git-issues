@@ -24,8 +24,8 @@ class GitIssuesCLI < Thor
     nil
   end
 
-  desc "add <title> <content>", "add a new issue"
-  def add( title, content )
+  desc "add <title> [<content>]", "add a new issue"
+  def add( title, content = nil )
     repo.issue_create title, content
   end
 
