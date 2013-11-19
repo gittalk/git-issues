@@ -42,7 +42,7 @@ class RepoProvider::Gitlab
   def format_issues is
     Array(is).map do |i|
       {
-        'number'      => i.id,
+        'number'      => i.iid,
         'title'       => i.title,
         'description' => i.description,
         'state'       => i.state
