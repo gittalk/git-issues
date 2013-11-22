@@ -7,11 +7,12 @@
 
 Why? There's excellent tools for GitHub out there, but I found integration for BitBucket or Gitlab lacking.
 
-Under development...
+# Installation
 
-# Dependencies
+You can build the gem and install it on your system:
 
-* gems: thor, parseconfig, octokit, bitbucket_rest_api, gitlab
+    gem build git-issues.gemspec
+    gem install *gem
 
 # Security
 
