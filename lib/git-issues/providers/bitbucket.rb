@@ -38,6 +38,10 @@ class RepoProvider::Bitbucket
     bitbucket.issues.delete( repo['user'], repo['repo'], id)
   end
 
+  def provider
+    bitbucket
+  end
+
   private
 
   def format_issues is
