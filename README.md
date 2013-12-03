@@ -11,8 +11,9 @@ Why? There's excellent tools for GitHub out there, but I found integration for B
 
 You can build the gem and install it on your system:
 
-    gem build git-issues.gemspec
-    gem install *gem
+    bundle install
+    bundle exec gem build git-issues.gemspec
+    bundle exec gem install *gem
 
 # Security
 
