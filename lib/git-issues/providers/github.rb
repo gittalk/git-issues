@@ -31,6 +31,10 @@ class RepoProvider::Github
     log.warn "You can't delete issues on GitHub. Please close/resolve them instead."
   end
 
+  def provider
+    github
+  end
+
   private
 
   def gh_repo

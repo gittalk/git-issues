@@ -30,6 +30,10 @@ class RepoProvider::Gitlab
     log.warn "You can't delete issues on Gitlab anymore, it is deprecated. Please close/resolve them instead."
   end
 
+  def provider
+    gitlab
+  end
+
   private
 
   def gl_project_id
