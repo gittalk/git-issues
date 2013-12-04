@@ -28,10 +28,12 @@ class RepoProvider::Bitbucket
   end
 
   def issue_create title, content
-    bitbucket.issues.create( repo['user'], repo['repo'], {
+    ret = bitbucket.issues.create( repo['user'], repo['repo'], {
       title:    title,
       content:  content
       })
+    id = ret['resource_uri'].match(/[0-9]+$/)
+    id && id[0].to_i || -1
   end
 
   def issue_delete id
