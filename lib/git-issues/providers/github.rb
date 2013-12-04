@@ -24,7 +24,8 @@ class RepoProvider::Github
   end
 
   def issue_create title, content
-    github.create_issue gh_repo, title, content
+    ret = github.create_issue gh_repo, title, content
+    ret.attrs && ret.attrs[:number] || -1
   end
 
   def issue_delete id
