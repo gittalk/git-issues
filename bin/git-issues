@@ -29,7 +29,8 @@ class GitIssuesCLI < Thor
 
   desc "add <title> [<content>]", "add a new issue"
   def add( title, content = nil )
-    repo.issue_create title, content
+    r = repo.issue_create title, content
+    Log.ok "created issue #{r}" if r.instance_of?(Fixnum)
   end
 
   desc "delete <id>", "delete an issue"
