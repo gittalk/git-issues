@@ -6,7 +6,7 @@ require 'gitlab'
 class RepoProvider::Gitlab
 
   URL_PATTERNS = [
-    /git@(?<host>[^:]*):(?<user>[^\/]+)\/(?<repo>.+)\.git/
+    /^(ssh:\/\/)?git@(?<host>[^:]*):(?<user>[^\/]+)\/(?<repo>.+)\.git$/
   ]
 
   def self.get_repo url

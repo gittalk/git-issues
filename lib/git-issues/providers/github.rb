@@ -6,7 +6,7 @@ require 'octokit'
 class RepoProvider::Github
 
   URL_PATTERNS = [
-    /git@github.com:(?<user>[^\/]+)\/(?<repo>.+)\.git/
+    /^(ssh:\/\/)?git@github.com:(?<user>[^\/]+)\/(?<repo>.+)\.git$/
   ]
 
   def self.get_repo url
