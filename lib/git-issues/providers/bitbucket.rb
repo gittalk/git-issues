@@ -6,7 +6,8 @@ require 'bitbucket_rest_api'
 class RepoProvider::Bitbucket
   
   URL_PATTERNS = [
-    /^(ssh:\/\/)?git@bitbucket.org:(?<user>[^\/]+)\/(?<repo>.+)\.git$/
+    /^git@bitbucket.org:(?<user>[^\/]+)\/(?<repo>.+)\.git$/,
+    /^(ssh:\/\/)?git@bitbucket.org\/(?<user>[^\/]+)\/(?<repo>.+)\.git$/
   ]
 
   def self.get_repo url
