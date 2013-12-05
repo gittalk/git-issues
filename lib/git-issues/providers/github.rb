@@ -44,7 +44,7 @@ class RepoProvider::Github
 
   def format_issues is
     Array(is).map do |i|
-      # nothing yet...
+      i['description'] = i['body']
       i
     end
   end
