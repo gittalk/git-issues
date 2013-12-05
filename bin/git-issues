@@ -12,6 +12,7 @@ class GitIssuesCLI < Thor
 
   desc "list", "list issues of a repository"
   method_options :all => :boolean
+  method_options :short => :boolean
   def list opts = {}
     o = ({
       all: (options.all)
@@ -23,8 +24,10 @@ class GitIssuesCLI < Thor
       reverse.
       each do |i|
       puts "%-3i | %-8s | %s" % [ i['number'], i['state'], i['title'] ]
-      puts "      %s" % i['description'] if i['description'].to_s.length > 0
-      puts ""
+      if not options.short
+        puts "      %s" % i['description'] if i['description'].to_s.length > 0
+        puts ""
+      end
     end
     nil
   end
