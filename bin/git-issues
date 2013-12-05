@@ -23,6 +23,8 @@ class GitIssuesCLI < Thor
       reverse.
       each do |i|
       puts "%-3i | %-8s | %s" % [ i['number'], i['state'], i['title'] ]
+      puts "      %s" % i['description'] if i['description'].to_s.length > 0
+      puts ""
     end
     nil
   end
