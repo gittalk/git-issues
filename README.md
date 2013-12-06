@@ -15,6 +15,37 @@ You can build the gem and install it on your system:
     bundle exec gem build git-issues.gemspec
     bundle exec gem install *gem
 
+# Usage
+
+## Setup a cloned repo
+
+    $ cd /path/to/your/repo
+    $ git issues
+
+You will be asked for your login credentials. Further information is described in section security.
+
+## Get issues
+
+    $ git issues
+    -- Using: git@github.com:gittalk/git-issues.git
+    22  | open     | Usage instructions
+    20  | open     | Display instructions for setup when the command is run the first time
+    18  | open     | clearly describe OAuth service when requesting the token e.g. Github OAuth
+
+## Add new issues
+
+The format is `add <title> [<content>]`
+
+    $ git issues add "Git issue title" "Git issue descripton"
+    -- Using: git@github.com:gittalk/git-issues.git
+    ++ created issue 24
+
+## Close issues
+
+The format is `delete <id>`
+
+    $ git issues delete 24
+
 # Security
 
 Your login information will be stored by default in: `~/.git-issues.conf`. Make sure to keep this file's permissions limited (e.g. `0600`).
