@@ -42,9 +42,9 @@ The format is `add <title> [<content>]`
     -- Using: git@github.com:gittalk/git-issues.git
     ++ created issue 24
 
-## Close issues
+## Closing or deleting issues
 
-The format is `delete <id>`
+The format is `delete <id>`. It is currently only supported by Bitbucket repos.
 
     $ git issues delete 24
 
