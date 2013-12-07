@@ -4,7 +4,7 @@ require 'parseconfig'
 require 'zlog'
 
 class GitIssues
-  def version; '0.1.1' end
+  def version; '0.1.2' end
   Log = Logging.logger[self]
 
   attr_reader :providers
