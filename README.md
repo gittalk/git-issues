@@ -1,8 +1,10 @@
 # git-issue
 
+✔ supported, ∅ not supported by this service, ✘ not supported by git-issues (yet)
+
 * list issues (bitbucket ✔, github ✔, gitlab ✔)
 * create issue (bitbucket ✔, github ✔, gitlab ✔)
-* delete issue (bitbucket ✔, github ✔ (n/a), gitlab ✔ (n/a))
+* delete issue (bitbucket ✔, github ∅, gitlab ∅)
 * cli integration ⋯
 
 Why? There's excellent tools for GitHub out there, but I found integration for BitBucket or Gitlab lacking.
