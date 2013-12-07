@@ -9,23 +9,6 @@
 
 Why? There's excellent tools for GitHub out there, but I found integration for BitBucket or Gitlab lacking.
 
-# Usage
-
-Go into a git repo on commandline:
-
-    cd myrepo
-
-    # list issues
-    git issues
-
-    # get commands
-    git issues help
-
-    git issues add "fix something" "very important"
-    git issues list
-    git issues delete 23
-
-
 # Installation
 
 You can build the gem and install it on your system:
