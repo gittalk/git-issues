@@ -29,7 +29,8 @@ class RepoProvider::Github
   end
 
   def issue_close id
-    github.close_issue gh_repo, id
+    ret = github.close_issue gh_repo, id
+    ret[:state] == 'closed'
   end
 
   def issue_delete id
