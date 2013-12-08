@@ -26,6 +26,10 @@ class RepoProvider::Gitlab
     gitlab.create_issue gl_project_id, title, description: content
   end
 
+  def issue_close id
+    gitlab.close_issue gl_project_id, id
+  end
+
   def issue_delete id
     log.warn "You can't delete issues on Gitlab anymore, it is deprecated. Please close/resolve them instead."
   end
