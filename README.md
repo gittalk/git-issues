@@ -4,6 +4,7 @@
 
 * list issues (bitbucket ✔, github ✔, gitlab ✔)
 * create issue (bitbucket ✔, github ✔, gitlab ✔)
+* close issue (bitbucket ✘, github ✘, gitlab ✘)
 * delete issue (bitbucket ✔, github ∅, gitlab ∅)
 * integrated cli (needs improvement)
 
@@ -44,7 +45,11 @@ The format is `add <title> [<content>]`
 
 ## Closing or deleting issues
 
-The format is `delete <id>`. It is currently only supported by Bitbucket repos.
+Close an issue with `close <id>`:
+
+    $ git issues close 24
+
+Use `delete <id>` to remove an issue. It is currently only supported by Bitbucket repos.
 
     $ git issues delete 24
 
