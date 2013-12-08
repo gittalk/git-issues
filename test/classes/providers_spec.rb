@@ -31,4 +31,16 @@ describe RepoProviders do
     end
   end
 
+  it "every provider has issue_create" do
+    @providers.each do |provider|
+      provider.must_respond_to :issue_create
+    end
+  end
+
+  it "every provider has issue_delete" do
+    @providers.each do |provider|
+      provider.must_respond_to :issue_delete
+    end
+  end
+
 end
