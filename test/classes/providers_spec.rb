@@ -43,4 +43,10 @@ describe RepoProviders do
     end
   end
 
+  it "every provider must provider its low-level provider" do
+    @providers.each do |provider|
+      provider.must_respond_to :provider
+    end
+  end
+
 end
