@@ -2,24 +2,33 @@ require 'minitest_helper'
 
 describe RepoProviders do
   before :each do
-    @ps = RepoProviders.new
+    @repo = RepoProviders.new
+    @providers = @repo.providers.map do |c|
+        c.new
+      end
   end
 
   it "contains providers" do
-    @ps.must_respond_to :providers
-    @ps.providers.must_be_instance_of Array
+    @repo.must_respond_to :providers
+    @repo.providers.must_be_instance_of Array
   end
 
   it "contains bitbucket provider" do
-    @ps.providers.must_include RepoProvider::Bitbucket
+    @repo.providers.must_include RepoProvider::Bitbucket
   end
 
   it "contains github provider" do
-    @ps.providers.must_include RepoProvider::Github
+    @repo.providers.must_include RepoProvider::Github
   end
 
   it "contains gitlab provider" do
-    @ps.providers.must_include RepoProvider::Gitlab
+    @repo.providers.must_include RepoProvider::Gitlab
+  end
+
+  it "every provider has issues_list" do
+    @providers.each do |provider|
+      provider.must_respond_to :issues_list
+    end
   end
 
 end
