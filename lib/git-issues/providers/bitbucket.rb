@@ -38,7 +38,8 @@ class RepoProvider::Bitbucket
   end
 
   def issue_close id
-    bitbucket.issues.edit( repo['user'], repo['repo'], id, {status: 'resolved'})
+    res = bitbucket.issues.edit( repo['user'], repo['repo'], id, {status: 'resolved'})
+    res['status'] == 'resolved'
   end
 
   def issue_delete id
