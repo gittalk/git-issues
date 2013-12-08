@@ -14,4 +14,12 @@ describe RepoProviders do
     @ps.providers.must_include RepoProvider::Bitbucket
   end
 
+  it "contains github provider" do
+    @ps.providers.must_include RepoProvider::Github
+  end
+
+  it "contains gitlab provider" do
+    @ps.providers.must_include RepoProvider::Gitlab
+  end
+
 end
