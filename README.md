@@ -49,7 +49,7 @@ Close an issue with `close <id>`:
 
     $ git issues close 24
 
-Use `delete <id>` to remove an issue. Currently this feature is only supported on Bitbucket repos.
+Use `delete <id>` to remove an issue. It is currently only supported by Bitbucket repos.
 
     $ git issues delete 24
 
