@@ -43,6 +43,12 @@ class GitIssuesCLI < Thor
     repo.issue_delete id
   end
 
+  desc "close <id>", "close an issue"
+  def close( id )
+    is_closed = repo.issue_close id
+    Log.ok "closed issue #{id}" if is_closed
+  end
+
   desc "cli", "open a cli"
   def cli
     require 'pry'
