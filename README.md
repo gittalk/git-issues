@@ -1,4 +1,5 @@
 # git-issue
+[![Build Status](https://travis-ci.org/gittalk/git-issues.png)](https://travis-ci.org/gittalk/git-issues)
 
 ✔ supported, ∅ not supported by this service, ✘ not supported by git-issues (yet)
 
