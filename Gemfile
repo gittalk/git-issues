@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'rake'
 gem 'thor'
 gem 'parseconfig'
 gem 'bitbucket_rest_api', '>= 0.1.5'
