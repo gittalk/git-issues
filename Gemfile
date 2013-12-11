@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'minitest'
 gem 'rake'
 gem 'thor'
 gem 'parseconfig'
