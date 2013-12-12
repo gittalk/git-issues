@@ -38,6 +38,11 @@ class GitIssuesCLI < Thor
     Log.ok "created issue #{r}" if r.instance_of?(Fixnum)
   end
 
+  desc "reopen <id>", "reopen an issue"
+  def reopen( id )
+    repo.issue_reopen id
+  end
+
   desc "delete <id>", "delete an issue"
   def delete( id )
     repo.issue_delete id
