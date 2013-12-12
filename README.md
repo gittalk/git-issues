@@ -6,6 +6,7 @@
 * list issues (bitbucket ✔, github ✔, gitlab ✔)
 * create issue (bitbucket ✔, github ✔, gitlab ✔)
 * close issue (bitbucket ✔, github ✔, gitlab ✔)
+* reopen issue (bitbucket ✔, github ✔, gitlab ✔)
 * delete issue (bitbucket ✔, github ∅, gitlab ∅)
 * integrated cli (needs improvement)
 

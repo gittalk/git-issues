@@ -1,3 +1,14 @@
+## 0.1.3
+
+* feature: close issues (github, bitbucket, gitlab)
+* feature: reopen issues (github, bitbucket, gitlab)
+* improvement: check response when closing issue (github, bitbucket)
+* bugfix: add minitest dependency to Gemfile
+* bugfix: update travis ci tests to 2.1.1
+* bugfix: update gemfile.lock
+* bugfix: remove ruby 1.9.2 from the list of supported platforms
+* bugfix: add missing rake to gemfile
+
 ## 0.1.2
 
 * feature: add an option --short to git issues list to show a shorter overview
