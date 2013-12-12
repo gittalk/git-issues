@@ -40,7 +40,8 @@ class GitIssuesCLI < Thor
 
   desc "reopen <id>", "reopen an issue"
   def reopen( id )
-    repo.issue_reopen id
+    is_ok = repo.issue_reopen id
+    Log.ok "reopened issue #{id}" if is_ok
   end
 
   desc "delete <id>", "delete an issue"
