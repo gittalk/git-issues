@@ -37,6 +37,12 @@ describe RepoProviders do
     end
   end
 
+  it "every provider has issue_reopen" do
+    @providers.each do |provider|
+      provider.must_respond_to :issue_reopen
+    end
+  end
+
   it "every provider has issue_close" do
     @providers.each do |provider|
       provider.must_respond_to :issue_close

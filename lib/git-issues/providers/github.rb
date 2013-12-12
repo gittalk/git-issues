@@ -28,6 +28,11 @@ class RepoProvider::Github
     ret.attrs && ret.attrs[:number] || -1
   end
 
+  def issue_reopen id
+    ret = github.reopen_issue gh_repo, id
+    ret[:state] == 'open'
+  end
+
   def issue_close id
     ret = github.close_issue gh_repo, id
     ret[:state] == 'closed'

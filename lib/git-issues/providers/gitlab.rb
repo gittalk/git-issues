@@ -26,6 +26,10 @@ class RepoProvider::Gitlab
     gitlab.create_issue gl_project_id, title, description: content
   end
 
+  def issue_reopen id
+    gitlab.reopen_issue gl_project_id, id
+  end
+
   def issue_close id
     gitlab.close_issue gl_project_id, id
   end
