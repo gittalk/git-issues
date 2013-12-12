@@ -37,6 +37,11 @@ class RepoProvider::Bitbucket
     id && id[0].to_i || -1
   end
 
+  def issue_reopen id
+    res = bitbucket.issues.edit( repo['user'], repo['repo'], id, {status: 'open'})
+    res['status'] == 'open'
+  end
+
   def issue_close id
     res = bitbucket.issues.edit( repo['user'], repo['repo'], id, {status: 'resolved'})
     res['status'] == 'resolved'
