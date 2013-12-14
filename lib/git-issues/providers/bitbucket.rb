@@ -7,7 +7,8 @@ class RepoProvider::Bitbucket
   
   URL_PATTERNS = [
     /^git@bitbucket.org:(?<user>[^\/]+)\/(?<repo>.+)\.git$/,
-    /^(ssh:\/\/)?git@bitbucket.org\/(?<user>[^\/]+)\/(?<repo>.+)\.git$/
+    /^(ssh:\/\/)?git@bitbucket.org\/(?<user>[^\/]+)\/(?<repo>.+)\.git$/,
+    /^https:\/\/([^@]+@)?bitbucket.org\/(?<user>[^\/]+)\/(?<repo>.+)\.git$/
   ]
 
   def self.get_repo url
