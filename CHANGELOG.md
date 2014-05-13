@@ -1,3 +1,11 @@
+# Changelog
+
+## 0.1.4
+
+* feature: add https-style urls to github and bitbucket
+* bugfix: check if login config was created before using it
+* bugfix: fix rubinius tests and support
+
 ## 0.1.3
 
 * feature: close issues (github, bitbucket, gitlab)
