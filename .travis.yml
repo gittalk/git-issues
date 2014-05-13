@@ -5,5 +5,4 @@ rvm:
   - "2.0.0"
   - "jruby-19mode"
   - "rbx-2.1.1"
-
-before_install: gem install rubysl
+  - "rbx-2.2.6"
