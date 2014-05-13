@@ -36,7 +36,6 @@ GEM
       sawyer (~> 0.5.1)
     parseconfig (1.0.2)
     rake (10.1.0)
-    rubysl-singleton (2.0.0)
     sawyer (0.5.1)
       addressable (~> 2.3.5)
       faraday (~> 0.8, < 0.10)
@@ -56,6 +55,5 @@ DEPENDENCIES
   octokit
   parseconfig
   rake
-  rubysl-singleton
   thor
   zlog

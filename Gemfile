@@ -8,7 +8,3 @@ gem 'octokit'
 gem 'gitlab'
 gem 'zlog'
 gem 'highline'
-
-platforms :rbx do
-  gem 'rubysl-singleton'
-end
