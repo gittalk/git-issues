@@ -14,13 +14,7 @@ Why? There's excellent tools for GitHub out there, but I found integration for B
 
 # Installation
 
-You can build the gem and install it on your system:
-
-    bundle install
-    bundle exec gem build git-issues.gemspec
-    bundle exec gem install *gem
-
-Requires ruby >= 1.9.3.
+    gem install git-issues
 
 # Usage
 
