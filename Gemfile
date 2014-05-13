@@ -9,4 +9,6 @@ gem 'gitlab'
 gem 'zlog'
 gem 'highline'
 
-gem 'rubysl', :platforms => :rbx
+platforms :rbx do
+  gem 'rubysl-singleton'
+end
