@@ -80,8 +80,13 @@ module LoginHelper
     file = File.open(path, 'w+')
     config.write(file)
     file.close
-    # limit permissions to this file
-    File.chmod(0600, path)
+    # check if the file exists
+    if not File.file?(path)
+      Log.error "Couldn't save login configuration to #{path}."
+    else
+      # limit permissions to this file
+      File.chmod(0600, path)
+    end
   end
 
   def get_open prompt, field
