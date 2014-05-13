@@ -8,3 +8,5 @@ gem 'octokit'
 gem 'gitlab'
 gem 'zlog'
 gem 'highline'
+
+gem 'rubysl', :platforms => :rbx
