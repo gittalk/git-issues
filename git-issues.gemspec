@@ -1,12 +1,12 @@
 # coding: utf-8
 lib = File.expand_path('../lib/', __FILE__)
 $:.unshift lib unless $:.include?(lib)
-require 'git-issues'
+require 'git-issues/version'
 
 spec = Gem::Specification.new do |s|
   s.name = 'git-issues'
   s.licenses = ['MPLv2']
-  s.version = GitIssues.new.version
+  s.version = GitIssues.version
   s.platform = Gem::Platform::RUBY
   s.summary = "manage git issues in cli"
   s.description = s.summary
