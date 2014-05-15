@@ -9,3 +9,4 @@ gem 'gitlab'
 gem 'zlog'
 gem 'highline'
 gem 'simplecov', '~> 0.7.1'
+gem 'rubysl', '~> 2.0', :platform => :rbx
