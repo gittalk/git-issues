@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.5
+
+* improvement: separated version field from class
+* improvement: add simplecov
+* improvement: published gem on rubygems
+* bugfix: add missing rubysl for rubinius to gemfile
+
 ## 0.1.4
 
 * feature: add https-style urls to github and bitbucket
