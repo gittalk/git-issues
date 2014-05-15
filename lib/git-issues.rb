@@ -1,10 +1,10 @@
+require 'git-issues/version'
 require 'git-issues/providers'
 
 require 'parseconfig'
 require 'zlog'
 
 class GitIssues
-  def version; '0.1.4' end
   Log = Logging.logger[self]
 
   attr_reader :providers

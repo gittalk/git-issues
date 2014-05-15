@@ -10,7 +10,7 @@ describe LoginHelper do
         include LoginHelper
       end.new
     @config_path = Tempfile.new('foo').path
-    @config_pathn = Tempfile.new('foo').path
+    @config_pathn = Tempfile.new('bar').path
     File::write(@config_path, '')
     File::write(@config_pathn, '')
     @l.instance_variable_set :@config_file, @config_path
