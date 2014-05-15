@@ -20,6 +20,7 @@ spec = Gem::Specification.new do |s|
   s.add_dependency 'octokit'
   s.add_dependency 'gitlab'
   s.add_dependency 'zlog'
+  s.add_dependency 'highline'
 
   s.files = `git ls-files`.split("\n")
   s.executables = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
