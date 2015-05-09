@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.6
+
+* bugfix: recognize github repos without .git ending
+
 ## 0.1.5
 
 * improvement: separated version field from class
